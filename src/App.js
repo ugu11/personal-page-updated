@@ -13,9 +13,10 @@ function App() {
         <h2>Hello! I'm</h2>
         <h1>Hugo Gomes</h1>
         <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+          I'm a Computer Engineering student in university.<br/>
+          I've been programming for 3 years now and during that tima I've worked with a 
+          few different programming languages, but I mainly
+          focus in web (Javascript, React, Node) and mobile (Flutter, Dart) development.
         </p>
 
         <button className="btn" onClick={()=>{window.location = "#about-me-section"}}>More about me</button>
@@ -194,6 +195,24 @@ function App() {
           </div>
         </div>
 
+      </div>
+
+
+      <div id="articles-section">
+        <h1 className="section-title">Articles</h1>
+        <h2>Capture photos from Camera using Image Stream with Flutter</h2>
+        <p>
+          This article/tutorial is about using native C code in a Flutter app to increase the 
+          app's performance when converting an image from YUV420 to RGB. During the article
+          I walk you through the steps of using an Image Stream to get the image from the phone's
+          camera, setting up the dart:ffi library and the native C function, converting the image
+          from YUV420 to RGB and finally displaying the image on the screen.
+            <br/><br/>
+          The full article can be found at:
+          <a href="https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee">
+          https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee
+          </a>
+        </p>
       </div>
 
       <div id="contact-section">
