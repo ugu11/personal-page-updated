@@ -91,7 +91,7 @@ function App() {
         <Fade bottom>
           <div id="experience">
             <h1 className="section-title">Experience</h1>
-            <CardComponent title="Internship" location="Pombaldata LDA." date="April 2019 - June 2019 (10 weeks)"/>
+            <CardComponent title="Internship" location="Pombalsys LDA." date="April 2019 - June 2019 (10 weeks)"/>
             <CardComponent title="Internship - Erasmus+ in Berlin" location="TC Elektronik" date="February 2018 - April 2018 (6 weeks)"/>
           </div>
         </Fade>
