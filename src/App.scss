@@ -55,6 +55,13 @@ p{
     right: 0;
     width: 30%;
     object-fit: contain;
+    
+z-index:-1;
+  }
+  
+  .separator{
+    position: absolute;
+    bottom: -10px;
   }
 
 }
