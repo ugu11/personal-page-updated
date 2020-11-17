@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.scss';
-import ImageSlider from './ImageSlider'
+import ImageSlider from './components/ImageSlider'
+import Socials from './components/Socials'
 
 function App() {
   const [ selectedProject, setSelectedProject ] = useState("")
@@ -50,12 +51,14 @@ function App() {
   return (
     <div className="main-container">
       <section className="main-page">
-        <img src={require('../src/assets/bubbles.svg')} alt="bg-img"/>
+        <img className="bg-img" src={require('../src/assets/bubbles.svg')} alt="bg-img"/>
 
-        <div>
+        <div className="header-info">
           <h5>Hello! I'm</h5>
           <h1>Hugo Gomes</h1>
           <h3>Computer Engineering Student @ ISEC</h3>
+          <div className="separator"></div>
+          <Socials/>
         </div>
 
       </section>

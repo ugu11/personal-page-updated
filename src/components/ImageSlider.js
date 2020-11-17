@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 function ImageSlider(props){
-    const [ images, setImages ] = useState(props.imgList.map(img => require('./assets/img/'+img)))
+    const [ images, setImages ] = useState(props.imgList.map(img => require('../assets/img/'+img)))
     const [ imgIndex, setImgIndex ] = useState(0)
     const [ timeout, _setTimeout ] = useState(null)
 
@@ -10,14 +10,14 @@ function ImageSlider(props){
     }, [imgIndex])
 
     useEffect(() =>  {
-        setImages(props.imgList.map(img => require('./assets/img/'+img)))
+        setImages(props.imgList.map(img => require('../assets/img/'+img)))
         clearTimeout(timeout)
         createTimeout()
     }, [props.imgList])
 
     const createTimeout = () => {
         _setTimeout(setTimeout(() => {
-            setImages(props.imgList.map(img => require('./assets/img/'+img)))
+            setImages(props.imgList.map(img => require('../assets/img/'+img)))
 
             if(imgIndex < images.length-1)
                 setImgIndex(imgIndex+1)
