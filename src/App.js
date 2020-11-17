@@ -1,263 +1,258 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-import SkillDisplayComponent from './SkillDisplayComponent'
-import CardComponent from './CardComponent'
 import ImageSlider from './ImageSlider'
-import Fade from 'react-reveal/Fade';
 
 function App() {
+  const [ selectedProject, setSelectedProject ] = useState("")
+  const imgLists = {
+    mm: ["mm_add_field.png", "mm_home.png", "mm_table.png", "mm_table_data.png", "mm_viewrow.png"],
+    baixa: ["baixa_1.png", "baixa_2.png", "baixa_3.png"],
+    philter: ["philter_1.png", "philter_2.png"]
+  }
+  const projectsDescription = {
+    mm: <p>Multi Manage is a customizable data management web platform. It was conceived with the idea of giving a user and/or company a solution to easily customize and structure the data that they need to manage, without having to setup a whole database and develop a platform specifically for their needs.
+      <br/><br/>
+      For the backend of this project, it was used <b>Node.js</b> with the <b>Express framework</b> and <b>MongoDB</b> for the database.
+      The frontend was built using <b>React</b>.
+      <br/><br/>
+      Deployed project: <a href="https://multi-manage.ugomes.com/">https://multi-manage.ugomes.com/</a><br/>
+      Frontend source code: <a href="https://github.com/Hugand/multi-manage">https://github.com/Hugand/multi-manage</a><br/>
+      Backend source code: <a href="https://github.com/Hugand/multi-manage-node-mongo-backend">https://github.com/Hugand/multi-manage-node-mongo-backend</a></p>,
+
+    baixa: <p>
+      Baixa is a project that gives the users access to the businesses, shops and points of interest of Coimbra's downtown.
+      <br/><br/>
+      It was built using <b>Ruby on Rails</b> on the backend, <b>Angular</b> on the frontend and <b>PostgreSQL</b> for the database.<br/>
+      For the tests, it was used <b>Rails Minitest</b> and <b>Cypress</b>, for the backend and end-2-end tests respectively.
+      <br/><br/>
+      Deployed project: <a href="https://www.baixa.app/">https://www.baixa.app/</a><br/>
+    </p>,
+
+    philter: <p>
+      Philter is a photo filtering web app. It provides exposure, contrast, highlights, shadows, hue and saturation enhancement, blur, noise and black and white filtering, and finally, color inversion.
+      <br/><br/>
+      The algorithms for the image enhancement and filtering were developed from scratch with the exception from the blur filter where it was used a third-party library
+      providing 2d FFT functions.<br/>
+      <br/><br/>
+      This app was developed using <b>React</b> and <b>Rust</b>, which was compiled with <b>Web Assembly</b> and used for the filtering and enhancement functions.
+      <br/><br/>
+      Deployed project: <a href="https://philter.ugomes.com/">https://philter.ugomes.com/</a><br/>
+      Source code: <a href="https://github.com/Hugand/philter">https://github.com/Hugand/philter</a><br/>
+    </p>
+  }
+
+  const titles = {
+    mm: "Multi Manage",
+    baixa: "Baixa",
+    philter: "Philter"
+  }
+
   return (
-    <div className="App">
-      
-      <div id="home-section">
-        <Fade left cascade>
-          <h2>Hello! I'm</h2>
+    <div className="main-container">
+      <section className="main-page">
+        <img src={require('../src/assets/bubbles.svg')} alt="bg-img"/>
+
+        <div>
+          <h5>Hello! I'm</h5>
           <h1>Hugo Gomes</h1>
-          <p>
-            I'm a Computer Engineering student in university.<br/>
-            I've been programming for 3 years now and during that tima I've worked with a 
-            few different programming languages, but I mainly
-            focus in web (Javascript, React, Node) and mobile (Flutter, Dart) development.
-          </p>
-        </Fade>
-
-        <button className="btn" onClick={()=>{window.location = "#about-me-section"}}>More about me</button>
-        <img src={require('./assets/img/shape.svg')}></img>
-        <div className="separator"></div>
-
-      </div>
-
-      <Fade left cascade>
-        <div id="about-me-section">
-            <h1 className="section-title">About me</h1>
-            <p>
-              Hello! My name is Hugo Gomes and I'm 18 years old. Currently I'm studying Computer Engineering in ISEC
-              which has been my main goal for 4 years now. In highschool I took a professional course in Management and
-              Programming of Informatics Systems. <br/>
-              I've been programming for 3 years now and I'm very passionate about it. <br/>
-              I've learned C, Java, Kotlin, Python and PHP along these 3 years, but I mainly focus in full-stack web (Javascript, React, Node) 
-              and mobile (Flutter, Dart) development.<br/>
-              On the database side, I've worked with MySQL and MongoDB.<br/>
-              I've developed some projects using these technologies. You can learn more about them <a href="#projects-section">here</a>.<br/><br/>
-
-              During my professional course, I had two internships. The first one was in 2018 where I participated in the Erasmus+ programme where I spent 10 weeks
-              in Berlin where more important than the internship itself, was the new life experience of living in a different country for the first time.<br/>
-              The second one was in 2019 where I was in a local company. This was the internship where I learned the most because I developed a project
-              for the company, which also was my final course project. More information  about this project can be found <a href="#assistec">here</a>.
-            </p>
-        </div>
-      </Fade> 
-
-        <div id="skills-section">
-          <h1 className="section-title">Skills</h1>
-
-          <div id="skill-container">
-            <Fade left>
-              <div id="left">
-                <SkillDisplayComponent skill="HTML5" percentage="90" />
-                <SkillDisplayComponent skill="CSS/SASS" percentage="80" />
-                <SkillDisplayComponent skill="Javascript" percentage="75" />
-                <SkillDisplayComponent skill="Flutter/Dart" percentage="70" />
-                <SkillDisplayComponent skill="MySQL" percentage="70" />
-                <SkillDisplayComponent skill="React" percentage="65" />
-                <SkillDisplayComponent skill="Node" percentage="60" />
-              </div>
-            </Fade>
-
-            <Fade right>
-              <div id="right">
-                <SkillDisplayComponent skill="Kotlin" percentage="60" />
-                <SkillDisplayComponent skill="C" percentage="60" />
-                <SkillDisplayComponent skill="MongoDB" percentage="50" />
-                <SkillDisplayComponent skill="Java" percentage="40" />
-                <SkillDisplayComponent skill="PHP" percentage="40" />
-                <SkillDisplayComponent skill="Python" percentage="40" />
-              </div>
-            </Fade>
-
-          </div>
+          <h3>Computer Engineering Student @ ISEC</h3>
         </div>
 
-      <div id="education-experience-section">
-        <Fade top>
-          <div id="education">
-            <h1 className="section-title">Education</h1>
-            <CardComponent title="Computer Engineering" location="ISEC" date="2019 - attending"/>
-            <CardComponent title="Professional Course of Management and Programming of Computer Systems"
-              location="ETP Sicó" date="2016 - 2019"/>
-          </div>
-        </Fade>
+      </section>
 
-        <Fade bottom>
-          <div id="experience">
-            <h1 className="section-title">Experience</h1>
-            <CardComponent title="Internship" location="Pombalsys LDA." date="April 2019 - June 2019 (10 weeks)"/>
-            <CardComponent title="Internship - Erasmus+ in Berlin" location="TC Elektronik" date="February 2018 - April 2018 (6 weeks)"/>
-          </div>
-        </Fade>
-      </div>
-
-
-      <div id="projects-section">
-        <h1 className="section-title">Projects</h1>
-
-        <Fade left>
-          <div id="multi-manage" className="rowLeft">
-            <div className="text">
-              <h2>Multi Manage</h2>
-              <p>This project is a customizable management web platform. This project was
-                conceived with the idea of giving a user or company a solution to easily
-                customize and structure the data that they need to manage without having
-                to setup a whole database and develop a platform specifically for their needs.
-                This platform's data is divided in organizations. An organization has all of the
-                tables data stored as well as it's users. The users are specific to the organizations
-                and are the ones who can manipulate the data stored in the tables. There is also an
-                admin user who has access to users and the table fields and can modify them.<br/><br/>
-                For the backend of this project, I used <b>NodeJs</b> with the <b>Express</b> framework and <b>MongoDB</b> for the database.<br/>
-                For the frontend of tbis project, I used <b>React</b>.<br/><br/>
-
-                <b>Deployed project:</b> <a href="https://multi-manage.ugomes.com/">https://multi-manage.ugomes.com/</a><br/>
-                <b>Source code:</b> <a href="https://github.com/Hugand/multi-manage">https://github.com/Hugand/multi-manage</a>
-              </p>
-            </div>
-            <div className="img-slider">
-              <ImageSlider imgList={[
-                "mm_home.png", "mm_table.png",
-                "mm_table_data.png", "mm_viewrow.png",
-                "mm_add_field.png"]} time={4000}/>
-            </div>
-          </div>
-        </Fade>
-
-        <Fade right>
-          <div id="smtuc" className="rowRight">
-            <div className="text">
-              <h2>SMTUC Custom app</h2>
-              <p>This project is a mobile app where it is possible to get information about bus stops,
-                real-time bus information and their timetables from Coimbra's buses (SMTUC).<br/>
-                It is possible to search for bus stops in a specific area and radius, and then the user 
-                can select a stop and see which buses are almost arriving at the stop and how much take they will 
-                take. On another screen, the user can see the timetables of a specific bus by
-                choosing its route, direction and week day.<br/><br/>
-
-                This project is an integration of an already existing API, so I only developed the mobile app itself.<br/>
-                For that I used <b>Flutter toolkit</b> and the <b>Dart</b> programming language.<br/><br/>
-
-                <b>Source code:</b> <a href="https://github.com/Hugand/smtuc_dec">https://github.com/Hugand/smtuc_dec</a>
-                
-              </p>
-            </div>
-            <div className="img-slider">
-              <ImageSlider imgList={["smtuc_stop.gif", "smtuc_stop_data.gif", "smtuc_timetables.gif"]} time={30000}/>
-            </div>
-          </div>
-        </Fade>
-
-        <Fade left>
-          <div id="assistec" className="rowLeft">
-            <div className="text">
-              <h2>Assistec</h2>
-              <p>This project was developed for local company during my second internship there in 2019 and was also my final highschool course
-                project.<br/>
-                With portability in mind, this project is composed by a website and an android app and its main goal is to manage the company's
-                technical assistances.<br/>
-                Besides the technical assistances, the platform can manage the company's users (the technicians), clients, products, services, 
-                it can send automated emails to users and clients on a technical assistance state change, it can generate a pdf report of a specific 
-                assistance, and on the android app it can get the clients signature as a confirmation of a technical assistances completed.<br/>
-                <br/>
-                The backend of this project was developed with <b>PHP/Laravel</b> and for the database I used <b>MySQL</b>.<br/>
-                The project's frontend was developed using <b>HTML, CSS and Javascript</b> for the website, and <b>Kotlin</b> for the android app.
-                
-                </p>
-            </div>
-            <div className="img-slider">
-              <ImageSlider imgList={[
-                "at1.png",
-                "at2.png",
-                "at3.png",
-                "at4.png",
-                "at5.png",
-                "at6.png",
-                "at7.png",
-                "at8.png",
-              ]} time={4000}/>
-            </div>
-          </div>
-        </Fade>
-        
-        <Fade right>
-          <div id="pandemic" className="rowRight">
-            <div className="text">
-              <h2>Pandemic evolution simulator</h2>
-              <p>During the Covid-19 pandemic I decided to build a pandemic evolution simulator.<br/>
-                I tried to use approximated rates that would be similar to the Corona Virus, although they are NOT official.<br/>
-                The behaviour in this simulation is based if everyone is outside and in perfect contact with everyone without any protections.<br/>
-                During the simulation the number of days is counted and a graph with the number of infected people is being generated. Each
-                person has a randomly generated age and if any, a desease. During the simulation they can have 4 different states: "healthy", "imune",
-                "dead" or "infected". Healthy people are represented in green, imune people in blue and infected people in red. When infected people
-                can die, recover or recover and be imune. If someone is healthy, that person can be infected, if it is imune it can't.<br/>
-                The people were based on Reactive Agents' behaviour.<br/>
-                <b>This is just a simulation, not real data and behaviour!</b>
-                <br/><br/>
-
-                For this project I used <b>Javascript</b> and to help me with the graphical displaying I used the <b>P5js</b> library.<br/><br/>
-
-                <b>Live demo:</b> <a href="https://hugand.github.io/corona/">https://hugand.github.io/corona/</a><br/>
-                <b>Source code:</b> <a href="https://github.com/Hugand/corona">https://github.com/Hugand/corona</a>
-
-                
-              </p>
-            </div>
-            <div className="img-slider">
-              <ImageSlider imgList={["pandemic.gif"]}/>
-            </div>
-          </div>
-        </Fade>
-
-      </div>
-
-
-      <Fade bottom cascade>
-        <div id="articles-section">
-          <h1 className="section-title">Articles</h1>
-          <h2>Capture photos from Camera using Image Stream with Flutter</h2>
-          <p>
-            This article/tutorial is about using native C code in a Flutter app to increase the 
-            app's performance when converting an image from YUV420 to RGB. During the article
-            I walk you through the steps of using an Image Stream to get the image from the phone's
-            camera, setting up the dart:ffi library and the native C function, converting the image
-            from YUV420 to RGB and finally displaying the image on the screen.
+      <section className="about-me">
+        <div className="container">
+          <img src={require('../src/assets/img/me_photo.png')} alt="me"/>
+          <div className="content">
+            <h2>About me</h2>
+            <div className="separator"></div>
+            <p>I'm currently a second year Computer Engineering student at <b>Instituto Superior de Engenharia de Coimbra (ISEC).</b>
               <br/><br/>
-            The full article can be found at:
-            <a href="https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee">
-            https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee
-            </a>
-          </p>
+              My main goal for these next few years is to finish my bachelor’s, get a masters degree either in the Software Engineering or Artificial Intelligence fields and grow as a developer.
+              <br/><br/>
+              At the moment, my main areas of interest in software development are frontend, backend and mobile development, although, I’m always interested in exploring new areas.
+            </p>
+          </div>
         </div>
-      </Fade>
+      </section>
 
-      <Fade>
-        <div id="contact-section">
-          <h1 className="section-title">Contact</h1>
+      <section className="skills">
+        <h2>Skills</h2>
 
-          <div id="contact-card">
-            <div className="row">
-              <label><b>Email: </b>hugoasgomes@hotmail.com</label>
+        <div className="item-list skill-list">
+          <div className="item-display skill-display item-dark">
+            <div>
+              <img src={require('../src/assets/img/react_logo.svg')} alt="react_logo"/>
             </div>
-            <div className="row">
-              <label><b>Github: </b><a href="https://github.com/Hugand">https://github.com/Hugand</a></label>
+            <h5>React</h5>
+          </div>
+
+          <div className="item-display skill-display item-dark">
+            <div>
+              <img src={require('../src/assets/img/node_logo.jpg')} alt="node_logo"/>
             </div>
-            <div className="row">
-              <label><b>Medium: </b><a href="https://medium.com/@hugand">https://medium.com/@hugand</a></label>
+            <h5>Node.js</h5>
+          </div>
+
+          <div className="item-display skill-display item-dark">
+            <div>
+              <img src={require('../src/assets/img/angular_logo.png')} alt="angular_logo"/>
+            </div>
+            <h5>Angular</h5>
+          </div>
+
+          <div className="item-display skill-display item-dark">
+            <div>
+              <img className="sass" src={require('../src/assets/img/sass_logo.png')} alt="sass_logo"/>
+            </div>
+            <h5>SASS/SCSS</h5>
+          </div>
+
+          <div className="item-display skill-display item-dark">
+            <div>
+              <img src={require('../src/assets/img/java_logo.png')} alt="java_logo"/>
+            </div>
+            <h5>Java</h5>
+          </div>
+          
+        </div>
+      </section>
+
+      <section className="experience">
+        <h2>Experience</h2>
+
+        <section className="timeline">
+          <div className="time-point">
+            <article className="card">
+              <h4>Nest Collective - Summer Internship</h4>
+              <p>Developed a web app from scratch where it displays the businesses and points of interest in Coimbra’s downtown, giving users access to their details and location, making easier the task of finding them and discovering new ones.
+                <br/><br/>
+                This project was built with a team of two developers and two designers where we used <b>Ruby on Rails</b> for the backend, <b>Angular</b> for the frontend and <b>PostgreSQL</b> for the database. We also covered backend and end-to-end testing using <b>Rails Minitest</b> and <b>Cypress</b>, respectively. A CI/CD pipeline was setup in the gitlab repository, covering our backend tests.
+                We had a <b>Product Design Sprint</b> for designing the solution to the problem given to the team.
+                Finally, the <b>agile</b> methodology was adopted with <b>SCRUM</b> for the project management.
+                <br/><br/>
+                For more about the development process: <a href="https://medium.com/nest-collective-writing-wall/development-process-summer-internship-2020-dae3e2b5a4fc">https://medium.com/nest-collective-writing-wall/development-process-summer-internship-2020-dae3e2b5a4fc</a>
+                <br/><br/>
+                Deployed project: <a href="https://www.baixa.app">https://www.baixa.app</a>
+                <br/><br/>
+                Duration of 2 months</p>
+            </article>
+            <div className="bar-container">
+              <div className="bar"></div>
+              <img src={require('../src/assets/img/nest_logo.svg')} alt="nest_logo"/>
+            </div>
+          </div>
+          <div className="time-point">
+            <article className="card">
+              <h4>Pombalsys - Internship</h4>
+              <p>Attended the professional course of Management and Programing of Informatics Systems during highschool.
+                  Finished my final course project with the grade of 19 (0-20) and the course with the grade of 18,2 (0-20).
+                  <br/><br/>
+                  September 2016 - July 2019</p>
+            </article>
+            <div className="bar-container">
+              <div className="bar"></div>
+              <img src={require('../src/assets/img/pombalsys_logo.svg')} alt="pombalsys_logo"/>
+            </div>
+          </div>
+        </section>
+      </section>
+
+
+      <section className="education">
+        <h2>Education</h2>
+
+        <section className="timeline">
+          <div className="time-point">
+            <div className="bar-container">
+              <div className="bar"></div>
+              <img src={require('../src/assets/img/isec_logo.svg')} alt="isec_logo"/>
+            </div>
+            <article className="card">
+              <h4>Instituto Superior de Engenharia de Coimbra</h4>
+              <h5>Computer Engineering</h5>
+              <div className="separator"></div>
+              <p>Currently taking my bachelor’s degree of Computer Engineering.
+                <br/><br/>
+                September 2019 - Currently attending</p>
+            </article>
+          </div>
+          <div className="time-point">
+            <div className="bar-container">
+              <div className="bar"></div>
+              <img src={require('../src/assets/img/etpsico_logo.svg')} alt="etpsico_logo"/>
+            </div>
+            <article className="card">
+              <h4>ETPSicó</h4>
+              <h5>Professional course in Management and Programming of Computer Systems</h5>
+              <div className="separator"></div>
+              <p>Development of a platform from scratch for managing tecnical assistances using PHP Laravel for the Backend and Frontend, Kotlin for the mobile app and MySQL for the database. This project was used in my final highschool course project, which got a grade of 19 (0-20).
+                <br/><br/>
+                Duration of 2 months</p>
+            </article>
+          </div>
+        </section>
+      </section>
+
+
+      <section className="projects">
+        <h2>Projects</h2>
+
+        <div className="item-list project-list">
+          <div className="item-display project-display item-light multi-manage-item">
+            <div className={(selectedProject === "mm" ? "selected" : undefined)} onClick={() => setSelectedProject("mm")}>
+              <img src={require('../src/assets/img/multi_manage_logo.svg')} alt="multi_manage_logo"/>
             </div>
           </div>
 
-        </div>
-      </Fade>
+          <div className="item-display project-display item-light">
+            <div className={(selectedProject === "baixa" ? "selected" : undefined)} onClick={() => setSelectedProject("baixa")}>
+              <img src={require('../src/assets/img/baixa_logo.svg')} alt="baixa_logo"/>
+            </div>
+          </div>
 
-      <footer id="footer">
-      </footer>
-      
+          <div className="item-display project-display item-light philter-item">
+            <div className={(selectedProject === "philter" ? "selected" : undefined)} onClick={() => setSelectedProject("philter")}>
+              <img src={require('../src/assets/img/philter_logo.svg')} alt="philter_logo"/>
+            </div>
+          </div>
+        </div>
+        
+        {selectedProject && <section className="project-details">
+            <header>
+              <button className="close-btn" onClick={() => setSelectedProject("")}>&#10005;</button>
+              <h4>{titles[selectedProject]}</h4>
+            </header>
+            <div className="content">
+              {imgLists[selectedProject] && <ImageSlider imgList={imgLists[selectedProject]}/>}
+              
+              { projectsDescription[selectedProject] }
+            </div>
+          </section>}
+        
+      </section>
+
+      <section className="articles">
+        <h2>Articles written</h2>
+
+        <div className="content">
+          <section className="article">
+            <h4>Capture photos from Camera using Image Stream with Flutter</h4>
+
+            <p>This article/tutorial is about using native C code in a Flutter app to increase the app's performance when converting an image from YUV420 to RGB. During the article I walk you through the steps of using an Image Stream to get the image from the phone's camera, setting up the dart:ffi library and the native C function, converting the image from YUV420 to RGB and finally displaying the image on the screen.
+              <br/><br/>
+              The full article can be found at: <a href="https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee">https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee</a></p>
+          </section>
+
+          <section className="article">
+            <h4>Development Process - Summer Internship 2020</h4>
+
+            <p>This article describes how I and the rest of the developers' team in the Nest Collective Summer Internship 2020 developed the project at hands. We talk about how it is structured, the technologies used and the decisions we made throughout the internship in more detail.
+              <br/><br/>
+              The full article can be found at: <a href="https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee">https://medium.com/@hugand/capture-photos-from-camera-using-image-stream-with-flutter-e9af94bc2bee</a></p>
+          </section>
+        </div>
+      </section>
     </div>
   );
 }
